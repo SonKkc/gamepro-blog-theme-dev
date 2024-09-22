@@ -1,0 +1,75 @@
+{% if request.query('ajax') %}
+{% set posts = post_list() %}
+{% set data = { data: posts } %}
+{% set postsJson = [] %}
+{% for item in posts %}
+{% set thumbnailFile = model_relation(item, 'thumbnailFile') %}
+{% set thumbnailUrl = image_resize(300, thumbnailFile) ?: link_asset('images/demo/das-1.png') %}
+{% set subject = model_relation(item, 'subject') %}
+{% set tag = model_relation(item, 'websiteTags')%}
+
+{% set postsJson = postsJson|merge([
+{
+title: item.title,
+slug: item.slug,
+description: item.description,
+url: link_to(item),
+thumbnail_file_url: thumbnailUrl,
+tags: tag,
+meta: {
+episodeCurrent: subject.getMetaValue('episode_current'),
+title: subject.title,
+year: subject.getMetaValue('year'),
+quality: subject.getMetaValue('quality'),
+}
+}
+])%}
+{% endfor %}
+{% set data = { data: postsJson } %}
+{{ data|json_encode }}
+
+{% else %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pageTitle }}</title>
+    <link href="{{ link_asset('css/style.min.css') }}?t={{ time() }}" rel="stylesheet" type="text/css" />
+
+    {% include 'components/common_css.html' %}
+</head>
+
+<style>
+    [x-cloak] {
+        display: none !important;
+    }
+
+    .logo::after{
+        content: '';
+            position: absolute;
+            right: -30px;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: solid #333B7C;
+            border-top: solid transparent;
+            border-bottom: solid transparent;
+    }
+</style>
+
+<body>
+    {% include 'partials/navbar.html'%}
+
+    <div class="">
+        {{ block('content') }}
+    </div>
+    
+    {% include 'partials/footer.html' %}
+
+    <script src="{{ link_asset('js/main.js') }}?t={{ time() }}" type="module"></script>
+
+    {% include 'components/common_js.html' %}
+</body>
+</html>
+{% endif %}

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+.post{
+    font-family: 'Lato', sans-serif;
+    
+    .-title{
+        @apply flex flex-col gap-2;
+        
+        p{
+            @apply text-[40px] leading-[40px] font-black text-[#000000];
+        }
+
+        .__info{
+            @apply flex gap-4 items-center;
+
+            p{
+                @apply text-[12px] leading-[14px] font-medium text-gray80 ;
+            }
+
+            span{
+                @apply text-[12px] leading-[14px] font-medium text-gray80;
+            }
+        }
+
+        img{
+            @apply w-full h-[335px] sm:h-[219px] object-cover;
+        }
+    }
+
+    .-post_content{
+        h1{
+            @apply text-4xl font-extrabold sm:text-2xl;
+        }
+
+        h2{
+            @apply text-2xl font-bold pt-4 sm:text-2xl;
+        }
+
+        h3{
+            @apply text-xl font-bold pt-4;
+        }
+       
+        p{
+            @apply pt-4 text-xl;
+        }
+
+        img{
+            @apply w-full h-auto pt-4 object-cover;
+        }
+
+        blockquote{
+            @apply italic ps-4 mt-4 text-lg border-s-4 border-gray-400;
+        }
+
+        ul{
+            @apply list-disc pl-8 pt-4;
+
+            li{
+                @apply text-xl;
+                span{
+                    @apply font-semibold;
+                }
+            } 
+        }
+    }
+}

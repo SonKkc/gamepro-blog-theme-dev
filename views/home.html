@@ -1,0 +1,51 @@
+{% extends 'layouts/default.html' %}
+
+{% block content %}
+
+{% include 'components/hero.html'%}
+{% set data = website.getMetaValue('home-sections') %}
+
+<div class="main">
+       <!--Top 3-->
+       {{ data }}
+       {% set tags = data|split(',') %}
+       {% if tags|length > 0 %}
+       {% set first_tag = tags[0] %}
+       {% set parts = first_tag|split(':') %}
+       {% if parts|length > 1 %}
+       {% set tag_name = parts[0]|trim %}
+       {% set ids = parts[1]|trim|split(' ') %}
+       {% else %}
+       {% set tag_name = '' %}
+       {% set ids = parts[0]|trim|split(' ') %}
+       {% endif %}
+
+       {% for id in ids %}
+       {% set catResource = website_category_find_by_id(id)%}
+       {% set current_tag_name = (tag_name != '') ? tag_name : id %}
+       <div>
+              {%
+              set query = multikey_filter_post_query()
+              .setFilterKeys([id])
+              .where('visibility', '=', 'public')
+              .setFilterKeyMatchingType('all')
+              .sortBy('created_at')
+              .sortDesc()
+              .setLimit(24)
+              %}
+
+              {% set cats = multikey_filter_get_posts(query) %}
+
+              {% if cats is not empty %}
+              {% include 'components/featured-content.html' with { resources: cats, tag_name: current_tag_name, catLink:
+              catResource } %}
+              {% endif %}
+       </div>
+       {% endfor %}
+       {% endif %}
+
+       <!--Most view-->
+
+</div>
+
+{% endblock %}

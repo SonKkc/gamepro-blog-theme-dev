@@ -1,0 +1,47 @@
+.footer{
+    @apply bg-footer py-10;
+
+    ._container{
+        @apply max-w-2xl mx-auto px-4 gap-4;
+        .-social{
+            @apply flex gap-4 items-center justify-center py-4;
+        }
+
+        .-items{
+            @apply flex items-center justify-around flex-wrap gap-4 text-[#FFFFFFD9] text-sm;
+
+            a:hover{
+                @apply text-gray-400;
+            }
+
+            div:hover{
+                @apply text-gray-400;
+
+                p{
+                    @apply text-gray-400;
+                }
+            }
+
+            div{
+                @apply flex gap-2 items-center cursor-pointer;
+                
+                p{
+                    @apply text-[#FFFFFFD9];
+                }
+               
+            }
+        }
+
+        .-submenu{
+            @apply flex items-center justify-center gap-4 text-[#FFFFFFD9] text-sm;
+
+            a:hover{
+                @apply text-gray-400;
+            }
+        }
+
+        p{
+            @apply text-[#FFFFFFCC] text-sm;
+        }
+    }
+}
