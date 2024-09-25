@@ -1,7 +1,8 @@
 {% set mainMenu = menu_solve('main') %}
 
 <!--Header-->
-<div x-data="{ {% for menuItem in mainMenu %}{% set index = loop.index %}{% if menuItem.items %}dropdown{{index}}: false {% endif %}{% endfor %} }" class="relative">
+<div x-data="{ {% for menuItem in mainMenu %}{% set index = loop.index %}{% if menuItem.items %}dropdown{{index}}: false {% endif %}{% endfor %} }" 
+class="sticky top-0 right-0 left-0 relative z-20">
     <header x-data="{nav_mobile: false}" class="header relative z-20">
         <!--header-->
         <a href="/" class="logo">

@@ -15,14 +15,14 @@
                     <p>{{ post.title }}</p>
                     <div class="__info flex-wrap">
                         <p>{{ post.created_at|date("d.m.Y") }}</p>
-                        <div class="-tags">
-                            {% for websiteTag in model_relation(post, 'websiteTags') %}
-                                <a href="{{ link_to(websiteTag) }}">{{ websiteTag.name }}</a>
-                            {% endfor %}
-                            {% for websiteCategory in model_relation(post, 'websiteCategories') %}
-                                <a href="{{ link_to(websiteCategory) }}">{{ websiteCategory.title }}</a>
-                            {% endfor %}
-                        </div>
+                    </div>
+                    <div class="-tags">
+                        {% for websiteTag in model_relation(post, 'websiteTags') %}
+                            <a href="{{ link_to(websiteTag) }}">{{ websiteTag.name }}</a>
+                        {% endfor %}
+                        {% for websiteCategory in model_relation(post, 'websiteCategories') %}
+                            <a href="{{ link_to(websiteCategory) }}">{{ websiteCategory.title }}</a>
+                        {% endfor %}
                     </div>
                     {% set thumbnailFile = model_relation(post, 'thumbnailFile') %}
                     <img src="{{ thumbnailFile ? image_resize(300, thumbnailFile) }}" alt="" class="">
@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <div class="__right_content">
+            <div class="__right_content flex flex-col gap-6">
                 {% include 'components/upcoming-games.html' %}
                 {% include 'components/social-media.html' %}
             </div>

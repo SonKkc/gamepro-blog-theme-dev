@@ -10,7 +10,7 @@
         }
 
         .__info{
-            @apply flex gap-2 items-center;
+            @apply flex gap-2;
 
             p{
                 @apply text-[12px] leading-[14px] font-medium text-gray80 ;
@@ -20,16 +20,16 @@
                 @apply text-[12px] leading-[14px] font-medium text-gray80;
             }
 
-            .-tags{
-                @apply flex flex-wrap gap-2 pt-2;
+        }
+        .-tags{
+            @apply flex flex-wrap gap-2 pt-2 mb-4;
 
-                a{
-                    @apply px-2 py-1 bg-gray-500 border-transparent rounded text-gray-50;
-                }
+            a{
+                @apply px-2 py-1 text-[14px] leading-[16px] bg-gray-500 border-transparent rounded text-gray-50;
+            }
 
-                a:hover{
-                    @apply bg-gray-600 text-gray-200;
-                }
+            a:hover{
+                @apply bg-gray-600 text-gray-200;
             }
         }
 
