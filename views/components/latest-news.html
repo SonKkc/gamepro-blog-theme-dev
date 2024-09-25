@@ -20,7 +20,7 @@
                     <a href="{{ link_post(listItem) }}">{{ listItem.title }}</a>
                     <div class="__info">
                         <p>{{ listItem.created_at|date("d.m.Y") }}</p>
-                        <div class="base-flex gap-1">
+                        {# <div class="base-flex gap-1">
                             <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -39,7 +39,7 @@
                                     stroke-linejoin="round" />
                             </svg>
                             <span>69</span>
-                        </div>
+                        </div> #}
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
         </div>
 
         <div class="__more_btn">
-            <a href="#">view more posts</a>
+            <p>view more posts</p>
         </div>
     </div>
 
@@ -56,3 +56,4 @@
     </div>
 </div>
 {% endif %}
+

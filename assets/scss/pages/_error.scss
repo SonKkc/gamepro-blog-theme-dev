@@ -1,0 +1,20 @@
+.__error{
+    @apply py-[175px];
+    .__content{
+        @apply flex flex-col items-center gap-4;
+        h1{
+            @apply text-7xl font-semibold pt-10 pb-5;
+        }
+
+        .__message{
+            @apply text-5xl font-semibold;
+        }
+
+        p{
+            @apply text-lg text-center;
+        }
+        a{
+            @apply py-2 px-4 rounded-full border-0 bg-tertiary text-white font-semibold hover:bg-tertiary/90;
+        }
+    }
+}

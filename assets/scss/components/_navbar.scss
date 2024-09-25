@@ -123,3 +123,15 @@
         }
     }
 }
+
+.__menulv2{
+    @apply absolute transition-transform w-full h-fit bg-gray-200 right-0 top-full left-0 z-10;
+
+    .__list{
+        @apply flex items-center gap-4 py-4;
+
+        a:hover{
+            @apply underline;
+        }
+    }
+}

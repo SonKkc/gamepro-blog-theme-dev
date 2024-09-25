@@ -113,14 +113,7 @@
        {% include 'components/worth-seeing.html' with { resources: listData.getResources() } %}
 
        <!--latest news-->
-       {% if tags|length > 0 %}
-       {% for tag in tags %}
-              <!-- Process "Most View" section -->
-              {% if 'category 1' in tag %}
-                     {{ _self.process_tag(tag, 'components/latest-news.html') }}
-              {% endif %}
-       {% endfor %}
-       {% endif %}
+       {% include 'components/latest-news-ajax.html' %}
 </div>
 
 {% endblock %}

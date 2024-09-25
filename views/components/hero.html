@@ -2,7 +2,13 @@
     <div class="hero">
         <img src="{{ link_asset('images/hero.png') }}?t={{ time() }}" alt="" class="">
         <div class="__content">
+            {% if pageDescription %}
+            <h2 class="-text">{{ pageDescription }}</h2>
+            {% elseif pageTitle %}
+            <h2 class="-title">{{ pageTitle}}</h2>
+            {% else %}
             <h2 class="-title">the world of games</h2>
             <p class="-text">gameplay, reviews, trends</p>
+            {% endif %}
         </div>
     </div>

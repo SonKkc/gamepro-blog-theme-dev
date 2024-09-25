@@ -63,7 +63,8 @@ quality: subject.getMetaValue('quality'),
 <body>
     {% include 'partials/navbar.html'%}
 
-    <div class="">
+    {% include 'components/loading.html' %}
+    <div id="content" style="display:none;">
         {{ block('content') }}
     </div>
     

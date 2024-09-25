@@ -6,7 +6,6 @@
 {% set data = listData.getResources() %}
 {% set page = request.query('page') %}
 
-
 <div class="main">
     <div class="my_container section_content">
         <div class="__left_content  category">
@@ -20,7 +19,7 @@
                     <a href="{{ listItem.getLink() }}">{{ listItem.getTitle() }}</a>
                     <div class="__info">
                         <p>{{ listItem.created_at|date("d.m.Y") }}</p>
-                        <span class="base-flex gap-1">
+                        {# <span class="base-flex gap-1">
                             <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -39,7 +38,7 @@
                                     stroke-linejoin="round" />
                             </svg>
                             69
-                        </span>
+                        </span> #}
                     </div>
                 </div>
             </div>
@@ -51,7 +50,7 @@
             </div>
             {% else %}
             <div class="__list">
-                {% include 'components/card-item.html' with { listData.getResources() } %}
+                {% include 'components/card-item.html' with { resources: listData.getResources() } %}
             </div>
             {% endif %}
     

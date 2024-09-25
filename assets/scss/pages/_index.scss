@@ -309,8 +309,8 @@
     .__more_btn {
       @apply flex items-center mt-5;
 
-      a {
-        @apply text-[14px] leading-[17px] font-bold text-white uppercase py-3 w-full bg-tertiary rounded text-center;
+      p {
+        @apply text-[14px] leading-[17px] font-bold text-white uppercase py-3 w-full bg-tertiary rounded text-center cursor-pointer;
       }
     }
   }
