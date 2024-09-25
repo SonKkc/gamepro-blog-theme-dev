@@ -4,10 +4,10 @@ export default {
   content: ["*"],
   theme: {
     screens: {
-      'sm': {'min': '0px', 'max': '860px'},
+      'sm': {'min': '0px', 'max': '912px'},
       // => @media (min-width: 640px and max-width: 767px) { ... }
 
-      'md': {'min': '861px', 'max': '1023px'},
+      'md': {'min': '913px', 'max': '1023px'},
       // => @media (min-width: 768px and max-width: 1023px) { ... }
 
       'lg': {'min': '1024px', 'max': '1279px'},

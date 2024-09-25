@@ -1,12 +1,16 @@
+{% if resources %}
+{% set resource = resources %}
 <!--worth_seeing-->
 <div class="bg-black">
     <div class="my_container worth_seeing">
         <h2>worth seeing</h2>
         <div class="section_content" style="margin-top: 20px;">
 
+            {% for listItem in resource|slice(0,1)  %}
             <div class="__left_content">
-                <div class="__video">
-                    <img src="./public/images/hero.png" alt="">
+                <a href="{{ listItem.getLink() }}" class="__video">
+                    {% set thumbnailFile = listItem.getThumbnailFile() %}
+                    <img src="{{ thumbnailFile ? image_resize(300, thumbnailFile) }}" alt="">
                     <div class="__play">
                         <svg viewBox="0 0 85 85" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_69_866)">
@@ -27,44 +31,23 @@
                             </defs>
                         </svg>
                     </div>
-                </div>
-                <p>
-                    Teaser for the new game from the makers of Little Nightmares is dark and has a talking scary pig
-                </p>
+                </a>
+                <a href="{{ listItem.getLink() }}">
+                    {{ listItem.getTitle() }}
+                </a>
             </div>
+            {% endfor %}
 
             <div class="__right_content">
                 <div class="__list">
+                    {% for listItem in resource|slice(1, 7) %}
                     <div class="-item">
-                        <a href="#" class="">In the brand new Animal Crossing alternative Floatopia you build floating
-                            islands</a>
+                        <a href="{{ listItem.getLink() }}">{{ listItem.getTitle() }}</a>
                     </div>
-                    <div class="-item">
-                        <a href="#" class="">Kingdom Come: Deliverance 2 - New gameplay takes you back to the Middle
-                            Ages</a>
-                    </div>
-                    <div class="-item">
-                        <a href="#" class="">In the brand new Animal Crossing alternative Floatopia you build floating
-                            islands</a>
-                    </div>
-                    <div class="-item">
-                        <a href="#" class="">In the brand new Animal Crossing alternative Floatopia you build floating
-                            islands</a>
-                    </div>
-                    <div class="-item">
-                        <a href="#" class="">In the brand new Animal Crossing alternative Floatopia you build floating
-                            islands</a>
-                    </div>
-                    <div class="-item">
-                        <a href="#" class="">In the brand new Animal Crossing alternative Floatopia you build floating
-                            islands</a>
-                    </div>
-                    <div class="-item">
-                        <a href="#" class="">In the brand new Animal Crossing alternative Floatopia you build floating
-                            islands</a>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% endif %}

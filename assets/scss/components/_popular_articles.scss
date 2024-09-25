@@ -1,0 +1,44 @@
+.__popular{
+    @apply px-4 py-3 pb-4;
+
+    h2{
+        @apply text-[20px] leading-[24.2px] font-extrabold mb-4;
+    }
+
+    .__list{
+        @apply flex flex-col gap-6 drop-shadow-none filter-none;
+
+        .-item{
+            @apply flex flex-col gap-2;
+
+            img{
+                @apply w-full h-[140px] object-cover rounded filter-none drop-shadow-none;
+            }
+
+            a{
+                @apply text-[14px] leading-[17px] font-bold line-clamp-2;
+            }
+
+            .__info{
+                @apply flex gap-4 items-center;
+
+                p{
+                    @apply text-[11px] leading-[13.31px] font-medium text-[#00000080];
+                }
+
+                span{
+                    @apply text-[#00000080] text-[10px] leading-[12px] font-normal;
+                }
+            }
+
+        }
+
+        .view_more{
+            @apply flex items-center;
+
+            a{
+                @apply text-[8px] leading-[9.72px] font-medium uppercase;
+            }
+        }
+    }
+}

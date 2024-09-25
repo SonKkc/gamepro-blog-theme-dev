@@ -1,0 +1,33 @@
+{% extends 'layouts/default.html' %}
+
+{% block content %}
+{}
+<div class="my_container section_content">
+    <div class="__left_content category">
+        {% if postsCount > 0 %}
+        <div class="__list">
+            {% include 'components/card-item.html' with { resources: listData.getResources() } %}
+        </div>
+
+        <div class="__more_btn">
+            <a href="#">view more posts</a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="__right_content">
+
+        <div class="flex flex-col gap-20 max-sm:gap-10">
+
+            <div class="flex flex-col gap-6">
+                {% include 'components/top-5.html' %}
+                {% include 'components/social-media.html' %}
+                {% include 'components/new-letter.html' %}
+            </div>
+
+            {% include 'components/popular-articles.html' %}
+            {% include 'components/upcoming-games.html' %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

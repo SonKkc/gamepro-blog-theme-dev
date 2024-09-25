@@ -1,0 +1,7 @@
+.-social_media{
+    @apply justify-between;
+
+    .-item{
+        @apply rounded flex items-center justify-center h-[25px] w-[85px];
+    }
+}

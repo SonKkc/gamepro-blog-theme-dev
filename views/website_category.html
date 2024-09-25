@@ -1,0 +1,74 @@
+{% extends 'layouts/default.html' %}
+
+{% block content %}
+
+{% include 'components/hero.html'%}
+{% set data = listData.getResources() %}
+{% set page = request.query('page') %}
+
+
+<div class="main">
+    <div class="my_container section_content">
+        <div class="__left_content  category">
+            {% if page is empty or page == 1 %}
+            {% set item1 = data|slice(0, 1) %}
+            {% for listItem in item1 %}
+            <div class="-first_item">
+                {% set thumbnailFile = listItem.getThumbnailFile() %}
+                <img src="{{ thumbnailFile ? image_resize(300, thumbnailFile) }}" alt="" class="">
+                <div class="__content">
+                    <a href="{{ listItem.getLink() }}">{{ listItem.getTitle() }}</a>
+                    <div class="__info">
+                        <p>{{ listItem.created_at|date("d.m.Y") }}</p>
+                        <span class="base-flex gap-1">
+                            <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.25 8.25C11.25 8.55942 11.1271 8.85616 10.9083 9.07496C10.6895 9.29375 10.3928 9.41667 10.0833 9.41667H3.08333L0.75 11.75V2.41667C0.75 2.10725 0.872916 1.8105 1.09171 1.59171C1.3105 1.37292 1.60725 1.25 1.91667 1.25H10.0833C10.3928 1.25 10.6895 1.37292 10.9083 1.59171C11.1271 1.8105 11.25 2.10725 11.25 2.41667V8.25Z"
+                                    stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            21
+                        </span>
+                        <span class="base-flex gap-1">
+                            <svg width="14" height="13" viewBox="0 0 14 13" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.1567 2.18919C11.8587 1.89111 11.505 1.65465 11.1156 1.49333C10.7263 1.332 10.309 1.24896 9.8875 1.24896C9.46605 1.24896 9.04873 1.332 8.65937 1.49333C8.27002 1.65465 7.91627 1.89111 7.61833 2.18919L7 2.80753L6.38167 2.18919C5.77984 1.58737 4.9636 1.24927 4.1125 1.24927C3.2614 1.24927 2.44515 1.58737 1.84333 2.18919C1.24151 2.79101 0.903412 3.60726 0.903412 4.45836C0.903412 5.30946 1.24151 6.12571 1.84333 6.72753L7 11.8842L12.1567 6.72753C12.4547 6.42959 12.6912 6.07584 12.8525 5.68648C13.0139 5.29713 13.0969 4.87981 13.0969 4.45836C13.0969 4.03691 13.0139 3.61959 12.8525 3.23024C12.6912 2.84089 12.4547 2.48714 12.1567 2.18919Z"
+                                    stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            69
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    
+            <div class="__list">
+               {% set item = data|slice(1) %}
+               {% include 'components/card-item.html' with { resources: item } %}
+            </div>
+            {% else %}
+            <div class="__list">
+                {% include 'components/card-item.html' with { resources: listData.getResources() } %}
+            </div>
+            {% endif %}
+    
+            {% include 'components/pagination_tailwind.html' with { resources: listData.getResources(), count: listData.getResourcesCount() } %}
+        </div>
+        <div class="__right_content">
+            <div class="flex flex-col gap-20 max-sm:gap-10">
+                <div class="flex flex-col gap-6">
+                    {% include 'components/top-5.html' %}
+                    {% include 'components/social-media.html' %}
+                    {% include 'components/new-letter.html' %}
+                </div>
+    
+                {% include 'components/popular-articles.html' %}
+                {% include 'components/upcoming-games.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

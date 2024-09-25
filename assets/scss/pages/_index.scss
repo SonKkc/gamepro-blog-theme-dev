@@ -92,7 +92,7 @@
           }
 
           a {
-            @apply text-[32px] leading-[38.72px] sm:text-[20px] sm:leading-[24.2px] font-bold text-white;
+            @apply text-[32px] leading-[38.72px] sm:text-[20px] sm:leading-[24.2px] font-bold text-white line-clamp-4;
           }
 
           .__info {
@@ -159,7 +159,7 @@
           @apply absolute inset-x-0 bottom-0 p-6;
 
           a {
-            @apply text-[32px] leading-[38.72px] sm:text-[20px] sm:leading-[24.2px] font-bold text-white;
+            @apply text-[32px] leading-[38.72px] sm:text-[20px] sm:leading-[24.2px] font-bold text-white line-clamp-2;
           }
 
           .__info {
@@ -219,7 +219,7 @@
         @apply w-full h-[162px] object-cover rounded;
       }
 
-      h3 {
+      a {
         @apply text-[14px] leading-[17px] font-bold line-clamp-2;
       }
 
@@ -264,7 +264,7 @@
       }
     }
 
-    p {
+    a {
       @apply text-[17px] leading-[20.52px] font-semibold text-[#FFFFFF];
     }
   }

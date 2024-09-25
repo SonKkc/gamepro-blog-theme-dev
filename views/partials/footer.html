@@ -76,12 +76,12 @@
             {% set index = loop.index %}
             <div x-on:click="openSubMenu{{index}} = !openSubMenu{{index}}, subMenuArrowDown{{index}} = !subMenuArrowDown{{index}}, subMenuArrowUp{{index}} = !subMenuArrowUp{{index}}">
                 <p>{{ menuItem.text }}</p>
-                <svg x-show="subMenuArrowDown{{index}}" class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                <svg x-show="subMenuArrowDown{{index}}" class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="m19 9-7 7-7-7" />
                 </svg>
-                <svg x-cloak x-show="subMenuArrowUp{{index}}" class="w-6 h-6" aria-hidden="true"
+                <svg x-cloak x-show="subMenuArrowUp{{index}}" class="w-5 h-5" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="m5 15 7-7 7 7" />

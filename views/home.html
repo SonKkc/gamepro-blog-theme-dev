@@ -4,11 +4,9 @@
 
 {% include 'components/hero.html'%}
 {% set data = website.getMetaValue('home-sections') %}
-
+{% set tags = data|split(',') %}
 <div class="main">
        <!--Top 3-->
-       {{ data }}
-       {% set tags = data|split(',') %}
        {% if tags|length > 0 %}
        {% set first_tag = tags[0] %}
        {% set parts = first_tag|split(':') %}
@@ -43,9 +41,86 @@
        </div>
        {% endfor %}
        {% endif %}
+       <!--end top 3-->
 
-       <!--Most view-->
+       <!--macro process_tag-->
+       {% macro process_tag(tag, component) %}
+       {% set parts = tag|split(':') %}
+       {% if parts|length > 1 %}
+           {% set tag_name = parts[0]|trim %}
+           {% set ids = parts[1]|trim|split(' ') %}
+       {% else %}
+           {% set tag_name = '' %}
+           {% set ids = parts[0]|trim|split(' ') %}
+       {% endif %}
+       
+       {% for id in ids %}
+           {% set catResource = website_category_find_by_id(id) %}
+           {% set current_tag_name = (tag_name != '') ? tag_name : id %}
+           <div>
+               {%
+                   set query = multikey_filter_post_query()
+                   .setFilterKeys([id])
+                   .where('visibility', '=', 'public')
+                   .setFilterKeyMatchingType('all')
+                   .sortBy('created_at')
+                   .sortDesc()
+                   .setLimit(24)
+               %}
+               {% set cats = multikey_filter_get_posts(query) %}
+   
+               {% if cats is not empty %}
+                   {% include component with { resources: cats, tag_name: current_tag_name, catLink: catResource } %}
+               {% endif %}
+           </div>
+       {% endfor %}
+   {% endmacro %}
+       <!--end macro process_tag-->
+   
+   {% if tags|length > 0 %}
+       {% for tag in tags %}
+           <!-- Process "Most View" section -->
+           {% if 'category 1' in tag %}
+               {{ _self.process_tag(tag, 'components/most-view.html') }}
+           {% endif %}
+   
+           <!-- Process "Latest Reviews" section -->
+           {% if 'Tag 12' in tag %}
+               {{ _self.process_tag(tag, 'components/latest-reviews.html') }}
+           {% endif %}
+       {% endfor %}
+   {% endif %}
 
+       <!--Console-->
+       <div class="my_container console">
+       {% if tags|length > 0 %}
+       {% for tag in tags %}
+              <!-- Process "Most View" section -->
+              {% if 'category 1' in tag %}
+                     {{ _self.process_tag(tag, 'components/console.html') }}
+              {% endif %}
+              {% if 'Tag 1 1' in tag %}
+                     {{ _self.process_tag(tag, 'components/console.html') }}
+              {% endif %}
+              {% if 'Tag 12' in tag %}
+                     {{ _self.process_tag(tag, 'components/console.html') }}
+              {% endif %}
+       {% endfor %}
+       {% endif %}
+       </div>
+
+       <!--worth seeing-->
+       {% include 'components/worth-seeing.html' with { resources: listData.getResources() } %}
+
+       <!--latest news-->
+       {% if tags|length > 0 %}
+       {% for tag in tags %}
+              <!-- Process "Most View" section -->
+              {% if 'category 1' in tag %}
+                     {{ _self.process_tag(tag, 'components/latest-news.html') }}
+              {% endif %}
+       {% endfor %}
+       {% endif %}
 </div>
 
 {% endblock %}

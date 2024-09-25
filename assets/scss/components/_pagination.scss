@@ -1,0 +1,30 @@
+.__more_btn{
+    @apply flex items-center mt-5;
+    
+    a{
+        @apply text-[14px] leading-[17px] font-bold text-white uppercase py-3 w-full bg-tertiary rounded text-center;
+    }
+}
+
+.custom-pagination{
+    li{
+        @apply hidden;
+    }
+
+    li:first-child{
+        @apply block w-full;
+        
+        a{
+            @apply w-full;
+        }
+    }
+
+    li:last-child{
+        @apply block w-full;
+
+        a{
+            @apply w-full;
+        }
+    }
+
+}

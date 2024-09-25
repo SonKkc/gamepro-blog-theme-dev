@@ -1,3 +1,16 @@
+
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM loaded");
+    const listItems = document.querySelectorAll("li");
+
+    listItems.forEach(function (li) {
+        const anchor = li.querySelector("a.active-link");
+        if (anchor) {
+            li.style.display = "none";
+            console.log("active link found");
+        }
+    });
+});
 async function fetchPosts(endpoint, page = 1, limit = 16, ajax = 1) {
     try {
         const url = window.location.origin + endpoint + (endpoint.includes('?') ? '&' : '?') + 'page=' + page + '&limit=' + limit + '&ajax=' + ajax;

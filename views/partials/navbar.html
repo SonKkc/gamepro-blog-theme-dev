@@ -1,12 +1,17 @@
-    <!--Header-->
-    <header x-data="{nav_mobile: false}" class="header z-20">
+{% set mainMenu = menu_solve('main') %}
+
+<!--Header-->
+<div x-data="{ {% for menuItem in mainMenu %}{% set index = loop.index %}{% if menuItem.items %}dropdown{{index}}: false {% endif %}{% endfor %} }" class="relative">
+    <header x-data="{nav_mobile: false}" class="header relative z-20">
         <!--header-->
         <a href="/" class="logo">
             <div class="__container">
                 <div class="__text">
-                    <svg  viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M24.689 0.510308C24.4992 0.508691 24.3098 0.508902 24.121 0.51073C22.1794 0.530066 20.2974 0.732426 18.4915 1.17321C14.392 2.1739 10.662 4.37384 7.39569 8.51208C7.70607 9.3031 8.10866 10.0665 8.61684 10.7749L7.50929 11.527C5.78186 9.11902 5.15792 6.24865 5.21515 3.6267C1.07939 8.61917 1.0241 14.2072 3.10897 18.4746C5.37327 23.1094 10.1199 26.0878 15.0261 24.9656C19.0508 22.96 22.1205 19.1103 22.7018 12.7036L24.0473 12.8191C23.4268 19.657 19.9766 24.01 15.5139 26.1967L15.5154 26.2024C15.5074 26.2045 15.4993 26.2061 15.4912 26.208C15.2544 26.3237 15.0146 26.4337 14.7722 26.537C10.3654 28.4186 5.16102 28.3557 0.656128 26.8734C1.04203 27.6353 1.78022 28.5282 2.85062 29.3881C4.47703 30.6947 6.78042 31.9313 9.35958 32.7308C14.4683 34.314 20.5673 34.2079 24.998 29.9172C25.749 26.6022 26.1723 22.9303 26.1285 20.6239L27.4789 20.5996C27.5344 23.518 26.944 28.1279 25.8757 31.9579C29.71 27.6479 31.5175 23.6938 31.9557 20.2937C32.466 16.3344 31.1561 13.0962 28.9458 10.769C26.7356 8.44184 23.6064 7.04993 20.5244 6.89454C17.4424 6.73929 14.4331 7.78962 12.314 10.3543V10.3545C10.7827 12.2079 10.2165 13.6779 10.1937 14.6815C10.1711 15.685 10.5963 16.2591 11.3182 16.6287C12.7622 17.3679 15.5814 16.8981 17.2854 14.773V14.7728C18.1897 13.645 18.4661 12.8059 18.4546 12.3453C18.4432 11.8848 18.2819 11.7357 17.9051 11.6139C17.1518 11.3704 15.4558 11.8327 14.5578 13.3237L13.3926 12.6593C14.5816 10.6854 16.7256 9.84788 18.3311 10.3671C19.1338 10.6265 19.7817 11.3745 19.8049 12.3138C19.8281 13.253 19.3645 14.3163 18.3502 15.5812C16.2761 18.168 12.9041 18.9254 10.6893 17.7917C9.58202 17.2249 8.81116 16.0876 8.84368 14.6526C8.8762 13.2177 9.61663 11.5221 11.2615 9.53119C13.6622 6.6256 17.1461 5.40877 20.5942 5.58258C21.2137 5.61373 21.8328 5.68967 22.446 5.80688C23.8196 3.36795 26.0977 1.75828 28.7528 0.771589C27.3747 0.613879 26.0184 0.520855 24.6891 0.510168L24.689 0.510308Z" fill="#FCFCFC"/>
-                        </svg>
+                    <svg viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M24.689 0.510308C24.4992 0.508691 24.3098 0.508902 24.121 0.51073C22.1794 0.530066 20.2974 0.732426 18.4915 1.17321C14.392 2.1739 10.662 4.37384 7.39569 8.51208C7.70607 9.3031 8.10866 10.0665 8.61684 10.7749L7.50929 11.527C5.78186 9.11902 5.15792 6.24865 5.21515 3.6267C1.07939 8.61917 1.0241 14.2072 3.10897 18.4746C5.37327 23.1094 10.1199 26.0878 15.0261 24.9656C19.0508 22.96 22.1205 19.1103 22.7018 12.7036L24.0473 12.8191C23.4268 19.657 19.9766 24.01 15.5139 26.1967L15.5154 26.2024C15.5074 26.2045 15.4993 26.2061 15.4912 26.208C15.2544 26.3237 15.0146 26.4337 14.7722 26.537C10.3654 28.4186 5.16102 28.3557 0.656128 26.8734C1.04203 27.6353 1.78022 28.5282 2.85062 29.3881C4.47703 30.6947 6.78042 31.9313 9.35958 32.7308C14.4683 34.314 20.5673 34.2079 24.998 29.9172C25.749 26.6022 26.1723 22.9303 26.1285 20.6239L27.4789 20.5996C27.5344 23.518 26.944 28.1279 25.8757 31.9579C29.71 27.6479 31.5175 23.6938 31.9557 20.2937C32.466 16.3344 31.1561 13.0962 28.9458 10.769C26.7356 8.44184 23.6064 7.04993 20.5244 6.89454C17.4424 6.73929 14.4331 7.78962 12.314 10.3543V10.3545C10.7827 12.2079 10.2165 13.6779 10.1937 14.6815C10.1711 15.685 10.5963 16.2591 11.3182 16.6287C12.7622 17.3679 15.5814 16.8981 17.2854 14.773V14.7728C18.1897 13.645 18.4661 12.8059 18.4546 12.3453C18.4432 11.8848 18.2819 11.7357 17.9051 11.6139C17.1518 11.3704 15.4558 11.8327 14.5578 13.3237L13.3926 12.6593C14.5816 10.6854 16.7256 9.84788 18.3311 10.3671C19.1338 10.6265 19.7817 11.3745 19.8049 12.3138C19.8281 13.253 19.3645 14.3163 18.3502 15.5812C16.2761 18.168 12.9041 18.9254 10.6893 17.7917C9.58202 17.2249 8.81116 16.0876 8.84368 14.6526C8.8762 13.2177 9.61663 11.5221 11.2615 9.53119C13.6622 6.6256 17.1461 5.40877 20.5942 5.58258C21.2137 5.61373 21.8328 5.68967 22.446 5.80688C23.8196 3.36795 26.0977 1.75828 28.7528 0.771589C27.3747 0.613879 26.0184 0.520855 24.6891 0.510168L24.689 0.510308Z"
+                            fill="#FCFCFC" />
+                    </svg>
                     <p>gamepro</p>
                 </div>
             </div>
@@ -14,70 +19,129 @@
         <!--nav desktop-->
         <div class="nav_desktop">
             <div class="__list">
-                <a href="/" class="-item">Home</a>
-                <a href="/category.html" class="-item">Feature</a>
-                <a href="/post.html" class="-item">About Us</a>
-                <a href="/" class="-item">News</a>
-                <a href="/" class="-item">Store</a>
+                {% for menuItem in mainMenu %}
+                {% set index = loop.index %}
+                {% if not menuItem.items %}
+                <a href="{{ menuItem.link }}" target="{{ menuItem.new_tab ? '_blank' : '' }}" class="-item">{{ menuItem.text }}</a>
+                {% else %}
+                <div @mouseenter="dropdown{{index}} = true" @mouseleave="dropdown{{index}} = false" @click="dropdown{{index}} = !dropdown{{index}}" class="-item flex items-center">
+                    <p>{{ menuItem.text }}</p>
+                    <svg class="" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 10 4 4 4-4"/>
+                    </svg>                      
+                </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
         <!--search-->
         <form action="{{ link_search() }}" class="__search">
-            <input type="text" name="{{ website.getMetaValue('search-query-name') }}" class="-input" placeholder="Search" style="box-shadow: none;">
+            <input type="text" name="{{ website.getMetaValue('search-query-name') }}" class="-input" placeholder="Search"
+                style="box-shadow: none;">
             <button type="submit" class="-btn">
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.875 13.875L10.7938 10.7938M12.4583 6.79167C12.4583 9.92128 9.92128 12.4583 6.79167 12.4583C3.66205 12.4583 1.125 9.92128 1.125 6.79167C1.125 3.66205 3.66205 1.125 6.79167 1.125C9.92128 1.125 12.4583 3.66205 12.4583 6.79167Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path
+                        d="M13.875 13.875L10.7938 10.7938M12.4583 6.79167C12.4583 9.92128 9.92128 12.4583 6.79167 12.4583C3.66205 12.4583 1.125 9.92128 1.125 6.79167C1.125 3.66205 3.66205 1.125 6.79167 1.125C9.92128 1.125 12.4583 3.66205 12.4583 6.79167Z"
+                        stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </button>
         </form>
+    
         <!--nav mobile-->
         <div @click="nav_mobile = true" class="open-nav_mobile">
-            <svg class="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
-              </svg>              
+            <svg class="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
+            </svg>
         </div>
         <!--nav mobile content-->
-        <div x-cloak class="nav__sidebar" 
-            x-show="nav_mobile"
+        <div x-cloak class="nav__sidebar" x-show="nav_mobile"
             x-transition:enter="transition ease-in-out duration-300 opacity-100 transform"
-                x-transition:enter-start="-translate-y-full" x-transition:enter-end=" translate-y-0"
-                x-transition:leave="transition ease-in-out duration-300 transform"
-                x-transition:leave-start="translate-y-0" x-transition:leave-end=" -translate-y-full"
-        >
+            x-transition:enter-start="-translate-y-full" x-transition:enter-end=" translate-y-0"
+            x-transition:leave="transition ease-in-out duration-300 transform" x-transition:leave-start="translate-y-0"
+            x-transition:leave-end=" -translate-y-full">
             <div class="__container">
                 <div class="__logo">
                     <div class="__name">
-                        <svg  viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M24.689 0.510308C24.4992 0.508691 24.3098 0.508902 24.121 0.51073C22.1794 0.530066 20.2974 0.732426 18.4915 1.17321C14.392 2.1739 10.662 4.37384 7.39569 8.51208C7.70607 9.3031 8.10866 10.0665 8.61684 10.7749L7.50929 11.527C5.78186 9.11902 5.15792 6.24865 5.21515 3.6267C1.07939 8.61917 1.0241 14.2072 3.10897 18.4746C5.37327 23.1094 10.1199 26.0878 15.0261 24.9656C19.0508 22.96 22.1205 19.1103 22.7018 12.7036L24.0473 12.8191C23.4268 19.657 19.9766 24.01 15.5139 26.1967L15.5154 26.2024C15.5074 26.2045 15.4993 26.2061 15.4912 26.208C15.2544 26.3237 15.0146 26.4337 14.7722 26.537C10.3654 28.4186 5.16102 28.3557 0.656128 26.8734C1.04203 27.6353 1.78022 28.5282 2.85062 29.3881C4.47703 30.6947 6.78042 31.9313 9.35958 32.7308C14.4683 34.314 20.5673 34.2079 24.998 29.9172C25.749 26.6022 26.1723 22.9303 26.1285 20.6239L27.4789 20.5996C27.5344 23.518 26.944 28.1279 25.8757 31.9579C29.71 27.6479 31.5175 23.6938 31.9557 20.2937C32.466 16.3344 31.1561 13.0962 28.9458 10.769C26.7356 8.44184 23.6064 7.04993 20.5244 6.89454C17.4424 6.73929 14.4331 7.78962 12.314 10.3543V10.3545C10.7827 12.2079 10.2165 13.6779 10.1937 14.6815C10.1711 15.685 10.5963 16.2591 11.3182 16.6287C12.7622 17.3679 15.5814 16.8981 17.2854 14.773V14.7728C18.1897 13.645 18.4661 12.8059 18.4546 12.3453C18.4432 11.8848 18.2819 11.7357 17.9051 11.6139C17.1518 11.3704 15.4558 11.8327 14.5578 13.3237L13.3926 12.6593C14.5816 10.6854 16.7256 9.84788 18.3311 10.3671C19.1338 10.6265 19.7817 11.3745 19.8049 12.3138C19.8281 13.253 19.3645 14.3163 18.3502 15.5812C16.2761 18.168 12.9041 18.9254 10.6893 17.7917C9.58202 17.2249 8.81116 16.0876 8.84368 14.6526C8.8762 13.2177 9.61663 11.5221 11.2615 9.53119C13.6622 6.6256 17.1461 5.40877 20.5942 5.58258C21.2137 5.61373 21.8328 5.68967 22.446 5.80688C23.8196 3.36795 26.0977 1.75828 28.7528 0.771589C27.3747 0.613879 26.0184 0.520855 24.6891 0.510168L24.689 0.510308Z" fill="#FCFCFC"/>
-                            </svg>
+                        <svg viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24.689 0.510308C24.4992 0.508691 24.3098 0.508902 24.121 0.51073C22.1794 0.530066 20.2974 0.732426 18.4915 1.17321C14.392 2.1739 10.662 4.37384 7.39569 8.51208C7.70607 9.3031 8.10866 10.0665 8.61684 10.7749L7.50929 11.527C5.78186 9.11902 5.15792 6.24865 5.21515 3.6267C1.07939 8.61917 1.0241 14.2072 3.10897 18.4746C5.37327 23.1094 10.1199 26.0878 15.0261 24.9656C19.0508 22.96 22.1205 19.1103 22.7018 12.7036L24.0473 12.8191C23.4268 19.657 19.9766 24.01 15.5139 26.1967L15.5154 26.2024C15.5074 26.2045 15.4993 26.2061 15.4912 26.208C15.2544 26.3237 15.0146 26.4337 14.7722 26.537C10.3654 28.4186 5.16102 28.3557 0.656128 26.8734C1.04203 27.6353 1.78022 28.5282 2.85062 29.3881C4.47703 30.6947 6.78042 31.9313 9.35958 32.7308C14.4683 34.314 20.5673 34.2079 24.998 29.9172C25.749 26.6022 26.1723 22.9303 26.1285 20.6239L27.4789 20.5996C27.5344 23.518 26.944 28.1279 25.8757 31.9579C29.71 27.6479 31.5175 23.6938 31.9557 20.2937C32.466 16.3344 31.1561 13.0962 28.9458 10.769C26.7356 8.44184 23.6064 7.04993 20.5244 6.89454C17.4424 6.73929 14.4331 7.78962 12.314 10.3543V10.3545C10.7827 12.2079 10.2165 13.6779 10.1937 14.6815C10.1711 15.685 10.5963 16.2591 11.3182 16.6287C12.7622 17.3679 15.5814 16.8981 17.2854 14.773V14.7728C18.1897 13.645 18.4661 12.8059 18.4546 12.3453C18.4432 11.8848 18.2819 11.7357 17.9051 11.6139C17.1518 11.3704 15.4558 11.8327 14.5578 13.3237L13.3926 12.6593C14.5816 10.6854 16.7256 9.84788 18.3311 10.3671C19.1338 10.6265 19.7817 11.3745 19.8049 12.3138C19.8281 13.253 19.3645 14.3163 18.3502 15.5812C16.2761 18.168 12.9041 18.9254 10.6893 17.7917C9.58202 17.2249 8.81116 16.0876 8.84368 14.6526C8.8762 13.2177 9.61663 11.5221 11.2615 9.53119C13.6622 6.6256 17.1461 5.40877 20.5942 5.58258C21.2137 5.61373 21.8328 5.68967 22.446 5.80688C23.8196 3.36795 26.0977 1.75828 28.7528 0.771589C27.3747 0.613879 26.0184 0.520855 24.6891 0.510168L24.689 0.510308Z"
+                                fill="#FCFCFC" />
+                        </svg>
                         <p>gamepro</p>
                     </div>
                     <button class="-btn_exit" @click="nav_mobile = false">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>                        
+                            <path d="M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
                     </button>
                 </div>
-
+    
                 <div class="__navbar">
                     <ul class="__list">
-                        <li class="-item"><a href="#" class="__link">Home</a></li>
-                        <li class="-item"><a href="#" class="__link">Feature</a></li>
-                        <li class="-item"><a href="#" class="__link">About Us</a></li>
-                        <li class="-item"><a href="#" class="__link">News</a></li>
-                        <li class="-item"><a href="#" class="__link">Store</a></li>
+                        {% for menuItem in mainMenu %}
+                        {% if not menuItem.items %}
+                        <li class="-item">
+                            <a href="{{ menuItem.link }}" target="{{ menuItem.new_tab ? '_blank' : '' }}" class="__link">{{ menuItem.text }}</a>
+                        </li>
+                        {% else %}
+                        {% set index = loop.index %}
+                        <li x-data="{ dropdownMb{{index}}: false, angleDown{{index}}: true, angleUp{{index}}: false  }" class="-item" @click="dropdownMb{{index}} = !dropdownMb{{index}}, angleDown{{index}} = !angleDown{{index}}, angleUp{{index}} = !angleUp{{index}}">
+                            <div class="flex items-center justify-center text-white text-center">
+                                <p class="__link">{{ menuItem.text }}</p>
+                                <svg x-show="angleDown{{index}}" class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 10 4 4 4-4"/>
+                                </svg>    
+                                <svg x-cloak x-show="angleUp{{index}}" class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16 14-4-4-4 4"/>
+                                </svg>                                  
+                            </div>
+
+                            <div x-cloak x-show="dropdownMb{{index}}" class="-submenu">
+                                {% for subMenuItem in menuItem.items %}
+                                    <a href="{{ subMenuItem.link }}" target="{{ subMenuItem.new_tab ? '_blank' : '' }}" class="-subitem">{{ subMenuItem.text }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
                     </ul>
                 </div>
-
-                <div class="__search_bar">
-                    <input type="text" class="-input" placeholder="Search">
-                    <button class="-btn_search">
-                        <svg class="" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
-                        </svg>                                           
+    
+                <form action="{{ link_search() }}" class="__search_bar">
+                    <input type="text" name="{{ website.getMetaValue('search-query-name') }}" class="-input" placeholder="Search" style="box-shadow: none;">
+                    <button type="submit" class="-btn_search">
+                        <svg class="" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+                        </svg>
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     </header>
+    {% for menuItem in mainMenu %}
+    {% if menuItem.items %}
+    {% set index = loop.index %}
+    {% for subMenuItem in menuItem.items %}
+    <div x-cloak  x-show="dropdown{{index}}" @mouseenter="dropdown{{index}} = true" @mouseleave="dropdown{{index}} = false"
+    x-transition:enter-start="-translate-y-full" x-transition:enter-end=" translate-y-0"
+    x-transition:leave="transition ease-in-out duration-300 transform"
+    x-transition:leave-start="translate-y-0" x-transition:leave-end=" -translate-y-full"
+    class="absolute transition-transform w-full h-[73px] bg-gray-300 right-0 top-full left-0 z-10">
+        <div class="my_container">
+            <div class="base-flex justify-between">
+                <div class="__list">
+                    <a href="{{ subMenuItem.link }}" target="{{ subMenuItem.new_tab ? '_blank' : '' }}" class="-item">{{ subMenuItem.text }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+</div>

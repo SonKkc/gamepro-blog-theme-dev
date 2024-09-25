@@ -1,0 +1,31 @@
+.-top5{
+    @apply px-4 py-3 pb-4 filter-none drop-shadow-none;
+
+    h2{
+        @apply text-[20px] leading-[24.2px] font-extrabold mb-4 filter-none drop-shadow-none;
+    }
+
+    .__list{
+        @apply flex flex-col gap-6 drop-shadow-none filter-none;
+
+        .-item{
+            @apply flex gap-4 items-center;
+
+            h3{
+                @apply font-bold text-[30px] leading-[35.76px] text-[#1E949B] drop-shadow-none filter-none;
+            }
+
+            a{
+                @apply font-semibold text-[15px] leading-[17.88px] drop-shadow-none line-clamp-2;
+            }
+        }
+
+        .view_more{
+            @apply flex items-center;
+
+            a{
+                @apply text-[8px] leading-[9.72px] font-medium uppercase;
+            }
+        }
+    }
+}

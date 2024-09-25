@@ -16,6 +16,7 @@ description: item.description,
 url: link_to(item),
 thumbnail_file_url: thumbnailUrl,
 tags: tag,
+date: item.created_at|date("d.m.Y"),
 meta: {
 episodeCurrent: subject.getMetaValue('episode_current'),
 title: subject.title,
@@ -36,6 +37,7 @@ quality: subject.getMetaValue('quality'),
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ pageTitle }}</title>
     <link href="{{ link_asset('css/style.min.css') }}?t={{ time() }}" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 
     {% include 'components/common_css.html' %}
 </head>
@@ -47,14 +49,14 @@ quality: subject.getMetaValue('quality'),
 
     .logo::after{
         content: '';
-            position: absolute;
-            right: -30px;
-            top: 0;
-            width: 0;
-            height: 0;
-            border-left: solid #333B7C;
-            border-top: solid transparent;
-            border-bottom: solid transparent;
+        position: absolute;
+        right: -30px;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-left: solid #333B7C;
+        border-top: solid transparent;
+        border-bottom: solid transparent;
     }
 </style>
 

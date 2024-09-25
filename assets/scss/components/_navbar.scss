@@ -92,9 +92,17 @@
                 .-item{
                     @apply w-full p-4 text-center;
 
-                    a{
+                    .__link{
                         font-family: 'Gotham-Light', sans-serif;
                         @apply text-[20px] leading-[24px] uppercase text-white font-medium text-center; 
+                    }
+
+                    .-submenu{
+                        @apply flex flex-col gap-4 border-t-2 border-b-2 border-gray-600 py-4 my-2;
+
+                        .-subitem{
+                            @apply text-[18px] leading-[22px] font-medium normal-case text-white;
+                        }
                     }
                 }
             }
