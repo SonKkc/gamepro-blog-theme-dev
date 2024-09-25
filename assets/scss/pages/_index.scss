@@ -39,20 +39,21 @@
       }
 
       .__info{
-        @apply hidden;
+        @apply -translate-y-full transition;
+
         span{
           @apply text-[#FFFFFF] text-[10px] leading-[12px] font-normal;
         }
       }
 
       svg{
-        @apply hidden;
+        @apply scale-0 transition;
       }
     }
   }
 
   .__item:hover{
-
+      
     img{
       @apply filter blur-[2px];
     }
@@ -67,7 +68,7 @@
       }
 
       svg{
-        @apply block;
+        @apply transition scale-100 duration-300 ease-in-out;
       }
     }
   }
