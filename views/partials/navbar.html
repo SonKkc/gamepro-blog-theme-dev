@@ -50,10 +50,13 @@ class="sticky top-0 right-0 left-0 relative z-20">
     
         <!--nav mobile-->
         <div @click="nav_mobile = true" class="open-nav_mobile">
-            <svg class="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
-            </svg>
+            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 7L2 7" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 4H2" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 10L2 10" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 13H2" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                
         </div>
         <!--nav mobile content-->
         <div x-cloak class="nav__sidebar" x-show="nav_mobile"
@@ -112,16 +115,18 @@ class="sticky top-0 right-0 left-0 relative z-20">
                     </ul>
                 </div>
     
-                <form action="{{ link_search() }}" class="__search_bar">
-                    <input type="text" name="{{ website.getMetaValue('search-query-name') }}" class="-input" placeholder="Search" style="box-shadow: none;">
-                    <button type="submit" class="-btn_search">
-                        <svg class="" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
-                                d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
-                        </svg>
-                    </button>
-                </form>
+                <div class="mx-[56px]">
+                    <form action="{{ link_search() }}" class="__search_bar">
+                        <input type="text" name="{{ website.getMetaValue('search-query-name') }}" class="-input" placeholder="Search" style="box-shadow: none;">
+                        <button type="submit" class="-btn_search">
+                            <svg class="" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                                    d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </header>

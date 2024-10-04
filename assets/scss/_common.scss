@@ -14,7 +14,7 @@ body {
 }
 
 .my_container {
-    @apply max-w-[904px] mx-auto sm:px-[50px] md:px-[50px];
+    @apply max-w-[904px] mx-auto sm:px-[71px] md:px-[60px];
 }
 
 .base-flex{
@@ -36,11 +36,11 @@ body {
     @apply border-b-2 border-secondary h-[24px];
 
     p{
-        @apply px-1 py-1 bg-secondary w-[119px] text-white text-[12px] leading-[14.52px] h-[24px] font-bold text-center uppercase;
+        @apply px-1 py-1 bg-secondary w-[119px] text-white text-[12px] leading-[15.52px] h-[24px] font-bold text-center uppercase;
     }
 
     a{
-        @apply px-1 py-1 bg-secondary w-[119px] text-white text-[12px] leading-[14.52px] h-[24px] font-bold text-center uppercase hover:underline;
+        @apply px-1 py-1 bg-secondary w-[119px] text-white text-[12px] leading-[15.52px] h-[24px] font-bold text-center uppercase hover:underline block;
     }
 }
 
@@ -52,7 +52,7 @@ body {
     }
 
     a{
-        @apply px-1 py-1 bg-secondary w-[82px] text-white text-[12px] leading-[14.52px] h-[24px] font-bold text-center capitalize hover:underline;
+        @apply px-1 py-1 bg-secondary w-[82px] text-white text-[12px] leading-[14.52px] h-[24px] font-bold text-center capitalize block hover:underline;
     }
 }
 

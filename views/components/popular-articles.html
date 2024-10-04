@@ -1,5 +1,44 @@
 <!--popular-articles-->
-<div id="ajax-popular_articles" class="border rounded-md relative">
+<div x-data="{
+    ...list('/ajax/top/month', true, 5),
+    formatDate(dateStr) {
+        const date = new Date(dateStr);
+        const day = date.getDate();
+        const month = date.getMonth() + 1; // Months are zero-based
+        const year = date.getFullYear();
+        return `${day}.${month}.${year}`; // Desired format: 27.6.2024
+    }
+}" class="border rounded-md">
+    <div class="__popular">
+        <h2>Popular Articles</h2>
+
+        
+        <div class="__list" x-show="data.length > 0">
+            <template x-for="(post, index) in data" :key="post.id">
+                <a data-fetch-result :href="post.slug" class="-item">
+                    <!-- Show image only for the first post -->
+                    <img :src="post.thumbnail_file_url" :alt="post.thumbnail_file_url" x-show="index === 0">
+                    <h3 x-text="post.title"></h3>
+                    <div class="__info">
+                        <p x-text="formatDate(post.created_at)"></p>
+                    </div>
+                </a>
+            </template>
+
+            <div class="loadmore">
+                <div x-show="isLoading" class="text-center h-full w-full">
+                    {% include 'components/loading.html' with { modify: 'absolute inset-0 bg-gray-500/50 flex flex-col items-center justify-center'}%}
+                </div>
+                <div x-bind="trigger" class="view_more" >
+                    <p>View more</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--popular-articles AJAX-->
+{# <div id="ajax-popular_articles" class="border rounded-md relative">
     <div class="__popular">
         <h2>Popular Articles</h2>
         <div id="popular_articles-container" class="__list">
@@ -22,7 +61,7 @@
 
 
 <script type="module">
-    import { fetchPosts } from "{{ link_asset('js/main.js') }}?t={{ time() }}";
+    import { fetchPosts } from "{{ link_asset('js/main.js') }}";
 
     (async () => {
         const endpoint = '';
@@ -33,7 +72,6 @@
         async function getPosts() {
             const loadingPopularArticles = document.getElementById('loading-popular_articles');
             const posts = await fetchPosts(endpoint, page, limit, ajax);
-            console.log('Fetched posts:', posts);
             loadingPopularArticles.style.display = 'flex';
 
 
@@ -70,4 +108,4 @@
 
         getPosts();
     })();
-</script>
+</script> #}

@@ -1,0 +1,15 @@
+.breadcrumb-container{
+    @apply w-full;
+
+    .__list{
+        @apply flex items-center line-clamp-1 gap-2;
+
+        li{
+            @apply flex items-center text-[14px] leading-[17px] font-medium text-[#00000080];
+
+            span{
+                @apply text-[#00000080] text-[14px] leading-[17px] font-normal;
+            }
+        }
+    }
+}

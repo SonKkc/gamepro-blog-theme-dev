@@ -1,5 +1,5 @@
 .footer{
-    @apply bg-footer py-10 mt-5;
+    @apply bg-footer mt-5;
 
     ._container{
         @apply max-w-2xl mx-auto px-4 gap-4;
@@ -38,6 +38,10 @@
             a:hover{
                 @apply text-gray-400;
             }
+        }
+
+        .-description{
+            @apply text-[#FFFFFFD9] text-sm text-center;
         }
 
         p{

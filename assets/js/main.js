@@ -2,7 +2,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('loading-screen').style.display = 'none';
     document.getElementById('content').style.display = 'block';
-    console.log("DOM loaded");
 });
 
 async function fetchPosts(endpoint, page = 1, limit = 16, ajax = 1) {

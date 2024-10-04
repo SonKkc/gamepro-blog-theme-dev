@@ -1,4 +1,27 @@
-<div id="ajax-top_5" class="border rounded-md relative">
+<div x-data="{...list('/ajax/top/year', true, 5)}" class="border rounded-md relative">
+    <div class="-top5">
+        <h2>Top 5 Best games</h2>
+        <div class="__list">
+            <template x-for="(post, index) in data" :key="post.id">
+            <div data-fetch-result class="-item">
+                <h3 x-text="index + 1"></h3>
+                <a :href="post.slug" x-text="post.title"></a>
+            </div>
+            </template>
+            {# <div class="loadmore">
+               <div x-show="isLoading" class="text-center h-full w-full">
+                    {% include 'components/loading.html' with { modify: 'absolute inset-0 bg-gray-500/50 flex flex-col items-center justify-center'}%}
+                </div>
+                <div x-bind="trigger" class="view_more" >
+                    <p>View more</p>
+                </div>
+            </div> #}
+        </div>
+    </div>
+</div>
+
+<!--top 5 AJAX-->
+{# <div id="ajax-top_5" class="border rounded-md relative">
     <div class="-top5">
         <h2>Top 5 Best games</h2>
         <div id="top_5-container" class="__list">
@@ -16,7 +39,7 @@
 </div>
 
 <script type="module">
-    import { fetchPosts } from "{{ link_asset('js/main.js') }}?t={{ time() }}";
+    import { fetchPosts } from "{{ link_asset('js/main.js') }}";
 
     (async () => {
         const endpoint = '';
@@ -27,7 +50,6 @@
         async function getPosts() {
             const loadingElement = document.getElementById('loading-top_5');
             const posts = await fetchPosts(endpoint, page, limit, ajax);
-            console.log('Fetched posts:', posts);
             loadingElement.style.display = 'flex';
 
 
@@ -52,4 +74,4 @@
 
         getPosts();
     })();
-</script>
+</script> #}

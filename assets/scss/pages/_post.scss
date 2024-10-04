@@ -6,7 +6,7 @@
         @apply flex flex-col gap-2;
         
         p{
-            @apply text-[40px] leading-[40px] font-black text-[#000000];
+            @apply text-[40px] leading-[40px] font-black text-[#000000] sm:text-[32px] sm:leading-[32px];
         }
 
         .__info{

@@ -63,7 +63,7 @@ quality: subject.getMetaValue('quality'),
 <body class="relative">
     {% include 'partials/navbar.html'%}
 
-    {% include 'components/loading.html' %}
+    {% include 'components/loading.html' with { modify: 'h-screen flex flex-col items-center justify-center mx-auto max-w-fit' } %}
     <div id="content" style="display:none;">
         {{ block('content') }}
     </div>

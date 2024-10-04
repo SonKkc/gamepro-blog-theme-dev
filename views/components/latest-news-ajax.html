@@ -30,7 +30,7 @@
 
 
 <script type="module">
-    import { fetchPosts } from "{{ link_asset('js/main.js') }}?t={{ time() }}";
+    import { fetchPosts } from "{{ link_asset('js/main.js') }}";
 
     (async () => {
         const endpoint = '';
@@ -44,8 +44,7 @@
             loadingElement.style.display = 'flex'; 
 
             const posts = await fetchPosts(endpoint, page, limit, ajax);
-            console.log('Fetched posts:', posts);
-
+           
             const postsContainer = document.getElementById('latest_news-container');
             loadingElement.style.display = 'none';
 

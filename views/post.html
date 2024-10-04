@@ -6,10 +6,10 @@
     <div class="my_container">
         <div class="__breadcrumb">
             <ul class="__list">
-                <li class="item"></li>
+                {% include 'components/breadcrumb.html' with { page:'Tag' , title: post.title} %}
             </ul>
         </div>
-        <div class="section_content">
+        <div class="section_content mt-4">
             <div class="__left_content post">
                 <div class="-title">
                     <p>{{ post.title }}</p>

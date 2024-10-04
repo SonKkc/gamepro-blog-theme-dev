@@ -1,5 +1,44 @@
 <!--upcoming games-->
-<div id="ajax-upcoming_games" class="border rounded-md relative">
+<div x-data="{
+    ...list('/ajax/top/year', true, 5),
+    formatDate(dateStr) {
+        const date = new Date(dateStr);
+        const day = date.getDate();
+        const month = date.getMonth() + 1; // Months are zero-based
+        const year = date.getFullYear();
+        return `${day}.${month}.${year}`; // Desired format: 27.6.2024
+    }
+}" class="border rounded-md relative">
+    <div class="__upcoming_games">
+        <h2>Upcoming games</h2>
+        <div class="__list">
+            <template  x-for="(post, index) in data" :key="post.id">
+            <div data-fetch-result class="-item">
+                <img :src="post.thumbnail_file_url"  title="{{item.title}}"
+                alt="{{item.title}}" class="">
+                <div class="__content">
+                    <a :href="post.slug" x-text="post.title"></a>
+                    <div class="__info">
+                        <p x-text="formatDate(post.created_at)"></p>
+                    </div>
+                </div>
+            </div>
+            </template>
+
+            <div class="loadmore">
+                <div x-show="isLoading" class="text-center h-full w-full">
+                    {% include 'components/loading.html' with { modify: 'absolute inset-0 bg-gray-500/50 flex flex-col items-center justify-center'}%}
+                </div>
+                <div x-bind="trigger" class="view_more" >
+                    <p>View more</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--upcoming games AJAX-->
+{# <div id="ajax-upcoming_games" class="border rounded-md relative">
     <div class="__upcoming_games">
         <h2>Upcoming games</h2>
         <div id="upcoming_games-container" class="__list">
@@ -20,7 +59,7 @@
 </div>
 
 <script type="module">
-    import { fetchPosts } from "{{ link_asset('js/main.js') }}?t={{ time() }}";
+    import { fetchPosts } from "{{ link_asset('js/main.js') }}";
 
     (async () => {
         const endpoint = '';
@@ -34,7 +73,6 @@
             loadingElement.style.display = 'flex'; 
 
             const posts = await fetchPosts(endpoint, page, limit, ajax);
-            console.log('Fetched posts:', posts);
 
             const postsContainer = document.getElementById('upcoming_games-container');
             loadingElement.style.display = 'none';
@@ -81,4 +119,4 @@
             }
         });
     })();
-</script>
+</script> #}

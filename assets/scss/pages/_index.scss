@@ -5,7 +5,7 @@
     @apply w-full h-[242px] sm:h-[139px] object-cover;
   }
   .__content {
-    @apply absolute inset-0 flex flex-col items-center justify-center gap-4 text-white;
+    @apply absolute inset-0 flex flex-col items-center justify-center gap-4 text-white sm:px-[71px];
 
     h2 {
       @apply text-[40px] leading-[40px] sm:text-[27px] sm:leading-[27px] text-center font-bold uppercase;

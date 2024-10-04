@@ -104,12 +104,13 @@
         {% endfor %}
 
         {% set footerText = website.getMetaValue('footer-text') %}
-        <p>
-            {% if footerText %}
+        <div class="-description">
             {{ footerText | raw }}
-            {% else %}
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et perspiciatis earum quaerat atque, laboriosam similique? Ex nemo temporibus consequuntur rem, voluptatum, ipsa quam repudiandae ducimus natus impedit, facilis officiis explicabo.
+        </div>
+
+        <p>
             © 2024 K2NET LLC 
-            {% endif %}
         </p>
     </div>
 </footer>
