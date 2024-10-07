@@ -64,7 +64,7 @@ body {
 
 .__section_title a:hover ~ .line,
 .__section_title p:hover ~ .line {
-  @apply w-full; /* Khi hover vào cả thẻ <a> hoặc <p>, line sẽ mở rộng */
+  @apply w-full; 
 }
 
 .__section_title-2 {
