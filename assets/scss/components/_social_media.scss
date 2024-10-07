@@ -1,5 +1,5 @@
 .-social_media{
-    @apply justify-between;
+    @apply justify-between sm:mx-[52px];
 
     .-item{
         @apply rounded flex items-center justify-center h-[25px] w-[85px];

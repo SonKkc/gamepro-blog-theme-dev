@@ -6,7 +6,7 @@
 {% set data = listData.getResources() %}
 {% set page = request.query('page') %}
 
-<div class="main">
+<div class="main mb-[82px]">
     <div class="my_container section_content">
         <div class="__left_content  category">
             {% if page is empty or page == 1 %}
@@ -45,7 +45,7 @@
             {% endfor %}
     
             <div class="__list">
-               {% set item = data|slice(1) %}
+               {% set item = data|slice(1, 5) %}
                {% include 'components/card-item.html' with { resources: item } %}
             </div>
             {% else %}

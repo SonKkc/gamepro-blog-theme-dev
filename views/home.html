@@ -5,7 +5,7 @@
 {% include 'components/hero.html'%}
 {% set data = website.getMetaValue('home-sections') %}
 {% set tags = data|split(',') %}
-<div class="main">
+<div class="main mb-[40px]">
        <!--Top 3-->
        {% if tags|length > 0 %}
        {% set first_tag = tags[0] %}

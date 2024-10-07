@@ -6,7 +6,7 @@
 {% set data = listData.getResources() %}
 {% set page = request.query('page') %}
 
-<div class="main">
+<div class="main mb-[82px]">
     <div class="my_container section_content">
         <div class="__left_content  category">
             {% if page is empty or page == 1 %}
@@ -54,7 +54,7 @@
             </div>
             {% endif %}
     
-            {% include 'components/pagination_tailwind.html' with { resources: listData.getResources(), count: listData.getResourcesCount() } %}
+            {% include 'components/pagination_tailwind.html' with { count: listData.getResourcesCount() } %}
         </div>
         <div class="__right_content">
             <div class="flex flex-col gap-20 max-sm:gap-10">

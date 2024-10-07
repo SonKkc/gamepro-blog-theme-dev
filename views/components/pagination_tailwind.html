@@ -2,10 +2,11 @@
 {%
     include 'components/pagination.html'
         with {
+            count: count,
             nextText: 'Next page',
             previousText: 'Previous page',
             paginationClass: 'custom-pagination flex items-center gap-2 mt-6 w-full justify-center mt-4',
-            paginationItemLinkClass:'text-[14px] leading-[17px] font-bold text-white uppercase py-3 w-full bg-tertiary rounded text-center block', 
+            paginationItemLinkClass:'pagination_btn bg-[#6283AA]', 
             paginationItemLinkActiveClass: 'hidden active-link',
         }
 %}

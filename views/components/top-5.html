@@ -5,7 +5,7 @@
             <template x-for="(post, index) in data" :key="post.id">
             <div data-fetch-result class="-item">
                 <h3 x-text="index + 1"></h3>
-                <a :href="post.slug" x-text="post.title"></a>
+                <a :href="post.url" x-text="post.title"></a>
             </div>
             </template>
             {# <div class="loadmore">

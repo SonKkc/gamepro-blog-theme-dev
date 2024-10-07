@@ -1,32 +1,72 @@
-.-newsletter{
-    @apply w-[288px] h-[162px] sm:w-full rounded relative;
+.-newsletter {
+    font-family: 'Shentox';
+  @apply w-[288px] h-[162px] sm:w-full rounded relative;
 
-    img{
-        @apply w-full h-full object-cover rounded relative;
+  img {
+    @apply w-full h-full object-cover rounded relative;
+  }
+
+  .__content {
+    @apply absolute inset-0 flex flex-col items-center justify-center gap-2 text-white  p-10;
+
+    p {
+        font-family:'ShentoxTh';
+      @apply text-[11px] leading-[13px] font-medium text-center uppercase;
     }
 
-    .__content{
-        @apply absolute inset-0 flex flex-col items-center justify-center gap-2 text-white  p-10;
-
-        p{
-            @apply text-[11px] leading-[13px] font-medium text-center uppercase;
-        }
-
-        h2{
-            @apply text-[20px] leading-[24.2px] font-semibold capitalize;
-        }
-
-        .-input_bar{
-            @apply border-b-2 border-gray-400 w-full flex items-center gap-2 max-w-[208px] ;
-
-            input{
-                @apply w-full bg-transparent h-5 text-[13px] leading-[15.79px] font-medium text-[#FFFFFF] border-transparent outline-none;
-            }
-
-            button{
-                @apply h-5;
-            }
-        }
-
+    h2 {
+      @apply text-[20px] leading-[24.2px] font-semibold capitalize;
     }
+
+    .-input_bar {
+      @apply border-b-2 border-gray-400 w-full flex items-center gap-2 max-w-[208px];
+
+      input {
+        font-family:'ShentoxTh';
+        @apply w-full bg-transparent h-5 px-0 text-[13px] leading-[15.79px] font-medium text-[#FFFFFF] border-transparent outline-none;
+      }
+
+      button {
+        @apply h-5;
+      }
+    }
+  }
+}
+
+.-newsletter-2 {
+  @apply h-[162px] relative;
+  font-family: 'Shentox';
+
+  img {
+    @apply w-full h-full object-cover relative;
+  }
+  ._container {
+    @apply flex items-center justify-between gap-4 h-full sm:flex-col sm:justify-center;
+
+    .-textleft {
+      @apply flex flex-col sm:items-center text-white gap-2;
+
+      p {
+        @apply text-[11px] leading-[13px] font-medium uppercase;
+      }
+
+      h2 {
+        @apply text-[32px] leading-none font-semibold capitalize sm:text-[20px];
+      }
+    }
+
+    .-input_bar {
+      @apply border-b-2 border-[#FFFFFF]/90 w-full flex items-center gap-2 max-w-[354px] sm:w-[207px];
+
+      input {
+        font-family:'ShentoxTh';
+        @apply w-full p-0 bg-transparent text-[26px] sm:text-[13px] leading-none font-medium text-[#ffffff80]/50 border-transparent outline-none;
+      }
+
+      button {
+        @apply h-5
+        
+      }
+    }
+  }
 }

@@ -12,10 +12,10 @@
     <div class="__popular">
         <h2>Popular Articles</h2>
 
-        
+
         <div class="__list" x-show="data.length > 0">
             <template x-for="(post, index) in data" :key="post.id">
-                <a data-fetch-result :href="post.slug" class="-item">
+                <a data-fetch-result :href="post.url" class="-item">
                     <!-- Show image only for the first post -->
                     <img :src="post.thumbnail_file_url" :alt="post.thumbnail_file_url" x-show="index === 0">
                     <h3 x-text="post.title"></h3>
@@ -25,14 +25,14 @@
                 </a>
             </template>
 
-            <div class="loadmore">
+            {# <div class="loadmore">
                 <div x-show="isLoading" class="text-center h-full w-full">
                     {% include 'components/loading.html' with { modify: 'absolute inset-0 bg-gray-500/50 flex flex-col items-center justify-center'}%}
                 </div>
                 <div x-bind="trigger" class="view_more" >
                     <p>View more</p>
                 </div>
-            </div>
+            </div> #}
         </div>
     </div>
 </div>

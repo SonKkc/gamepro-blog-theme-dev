@@ -6,11 +6,11 @@
         @apply flex flex-col gap-2;
         
         p{
-            @apply text-[40px] leading-[40px] font-black text-[#000000] sm:text-[32px] sm:leading-[32px];
+            @apply text-[40px] leading-none font-black text-[#000000] sm:text-[28px] leading-none;
         }
 
         .__info{
-            @apply flex gap-2;
+            @apply flex gap-2 sm:pt-2;
 
             p{
                 @apply text-[12px] leading-[14px] font-medium text-gray80 ;
@@ -21,53 +21,43 @@
             }
 
         }
-        .-tags{
-            @apply flex flex-wrap gap-2 pt-2 mb-4;
-
-            a{
-                @apply px-2 py-1 text-[14px] leading-[16px] bg-gray-500 border-transparent rounded text-gray-50;
-            }
-
-            a:hover{
-                @apply bg-gray-600 text-gray-200;
-            }
-        }
 
         img{
-            @apply w-full h-[335px] sm:h-[219px] object-cover;
+            @apply w-full h-[335px] sm:h-[219px] object-cover sm:pt-[26px] mt-[20px];
         }
     }
 
     .-post_content{
+
         h1{
-            @apply text-4xl font-extrabold sm:text-2xl;
+            @apply text-[30px] pt-[15px] font-bold sm:text-[22px];
         }
 
         h2{
-            @apply text-2xl font-bold pt-4 sm:text-2xl;
+            @apply text-[24px] font-bold pt-[15px] pb-[5px] sm:text-[20px];
         }
 
         h3{
-            @apply text-xl font-bold pt-4;
+            @apply text-[20] font-bold pt-[15px] sm:text-[18px];
         }
        
         p{
-            @apply pt-4 text-xl;
+            @apply pt-[10px] text-[20px] sm:text-[16px] font-normal;
         }
 
         img{
-            @apply w-full h-auto pt-4 object-cover;
+            @apply w-full h-auto pt-[15px] object-cover;
         }
 
         blockquote{
-            @apply italic ps-4 mt-4 text-lg border-s-4 border-gray-400;
+            @apply italic ps-4 mt-4 text-[18px] border-s-4 border-gray-400 sm:text-[16px];
         }
 
         ul{
-            @apply list-disc pl-8 pt-4;
+            @apply list-disc pl-8 pt-[15px];
 
             li{
-                @apply text-xl;
+                @apply text-xl sm:text-[16px];
                 span{
                     @apply font-semibold;
                 }

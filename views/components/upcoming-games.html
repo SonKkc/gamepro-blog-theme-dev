@@ -17,7 +17,7 @@
                 <img :src="post.thumbnail_file_url"  title="{{item.title}}"
                 alt="{{item.title}}" class="">
                 <div class="__content">
-                    <a :href="post.slug" x-text="post.title"></a>
+                    <a :href="post.url" x-text="post.title"></a>
                     <div class="__info">
                         <p x-text="formatDate(post.created_at)"></p>
                     </div>
